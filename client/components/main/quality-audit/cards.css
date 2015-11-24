@@ -1,3 +1,7 @@
+.card {
+	cursor: pointer;
+}
+
 .item.wall-number {
   text-align: center;
   padding: 11rem 0;
