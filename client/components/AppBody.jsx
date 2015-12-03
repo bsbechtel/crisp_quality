@@ -27,6 +27,11 @@ AppBody = React.createClass({
   },
 
   render() {
+    let content = React.cloneElement(this.props.content, {
+      ionModal: this.ionModal,
+      setModalState: this.setModalState
+    });
+
     return (
       <div className="ionic-body">
         {this.state.modal ? <Backdrop /> : false}
@@ -38,7 +43,7 @@ AppBody = React.createClass({
         <div className="view">
           <div className="scroll-content ionic-scroll">
             <div className="content overflow-scroll has-header">
-              {this.props.content}
+              {content}
             </div>
           </div>
         </div>

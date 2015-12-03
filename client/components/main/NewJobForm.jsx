@@ -15,7 +15,9 @@ NewJobForm = React.createClass({
       name: name,
       floorplan: type,
       score: 0,
-      total: 0
+      total: 0,
+      walkthrough_status: false,
+      touchup_notes: []
     });
 
     // Clear form

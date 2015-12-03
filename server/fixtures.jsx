@@ -13,7 +13,16 @@ if (Meteor.users.find().count() === 0) {
 			floorplan: i + " Bedrooms",
       score: 0,
       total: 0,
-      walkthrough_status: false
+      walkthrough_status: false,
+      touchup_notes: []
 		});
 	}
+
+  Jobs.insert({
+    name: "Job without notes",
+    floorplan: "2 Bedrooms",
+    score: 0,
+    total: 0,
+    walkthrough_status: false,
+  });
 }

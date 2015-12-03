@@ -14,7 +14,7 @@ CardPage = React.createClass({
   	});
 
   	this.setState({
-  		newCard: <Card job={this.props.job} newCard={this.newCard} />
+  		newCard: <Card job={this.props.job} newCard={this.newCard} ionModal={this.props.ionModal} setModalState={this.props.setModalState} />
   	});
   },
 
@@ -22,7 +22,7 @@ CardPage = React.createClass({
     if (this.state.show) {
   		return (
   			<div>
-  			  {this.state.oldCard ? <Card job={this.props.job} newCard={this.newCard} /> : false}
+  			  {this.state.oldCard ? <Card job={this.props.job} newCard={this.newCard} ionModal={this.props.ionModal} setModalState={this.props.setModalState} /> : false}
   			  {this.state.newCard}
     			<button className="button button-dark button-block" onClick={() => this.props.endWalkthrough()}>End Walkthrough</button>
   			</div>
@@ -73,7 +73,9 @@ Card = React.createClass({
   			y: 0,
   			dragging: "all 0.5s ease"
   		})
+      var wall = this.state.wall;
   		Jobs.update({_id: this.props.job._id}, {$set: {total: this.props.job.total + 1}});
+      this.props.ionModal("Touchup Notes", <TouchupNotes job={this.props.job} setModalState={this.props.setModalState} currentWall={wall} />);
   		Meteor.setTimeout(() => this.props.newCard(), 300);
     // Swipe right, pass
   	} else if (e.changedTouches[0].pageX > (window.innerWidth - 50)) {
